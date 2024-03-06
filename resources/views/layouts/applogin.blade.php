@@ -31,7 +31,7 @@
         @yield('content')
     </body>
     <!-- jQuery -->
-    <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>../../
+    <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
