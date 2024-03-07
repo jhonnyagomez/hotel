@@ -4,11 +4,11 @@
 
 @section('content')
 
-<div class="login-box">
+<div class="login-box" >
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+      <a href="{{ url('/home') }}" class="h1">THE REST PLACE</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Iniciar sesion</p>
@@ -24,24 +24,31 @@
           </div>
         </div>
         <div class="input-group mb-3">
-        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="********">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
-        <div class="row">
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
-          </div>
 
-          <div class="col-4">
-            <a href="{{route('register')}}" class="btn btn-primary btn-block">Registro</a>
+        <br>
+
+        <div style="display:contents; align-items:center; justify-content:center" >
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </div>
+
+            <div class="col-4">
+              <a href="{{route('register')}}" class="btn btn-primary btn-block">Registro</a>
+            </div>
+            <!-- /.col -->
           </div>
-          <!-- /.col -->
         </div>
+
+        
       </form>
       <br>
         <div class="row">
