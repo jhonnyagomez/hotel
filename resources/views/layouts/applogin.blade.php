@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.css')}}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -37,5 +37,6 @@
     <!-- AdminLTE App -->
     <script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
     @stack('scripts')
+
 
 </html>
