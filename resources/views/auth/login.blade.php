@@ -11,7 +11,7 @@
       <a href="{{ url('/home') }}" class="h1">THE REST PLACE</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Iniciar sesion</p>
+      <p class="login-box-msg">Sign in to start your session</p>
 
       <form method="POST" action="{{route('login')}}">
         @csrf
@@ -38,11 +38,11 @@
           <div class="row">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-primary btn-block">Registro</a>
+              <a href="{{route('register')}}" class="btn btn-primary btn-block">Register</a>
             </div>
             <!-- /.col -->
           </div>
@@ -55,7 +55,7 @@
             <div class="col-12">
             <p class="mb-1">
                 @if (Route::has('password.request'))
-                <a href="{{route('password.request')}}">Olvide mi contraseña</a>
+                <a href="{{route('password.request')}}">I forgot my password</a>
                 @endif
             </p>
             </div>
