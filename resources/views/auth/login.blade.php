@@ -4,16 +4,16 @@
 
 @section('content')
 
-<div class="login-box" >
+<div class="login-box text-center">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center" style="background-color: #92C7CF;">
+  <div class="card card-outline text-center">
+    <div class="card-header text-center" style="background-color: #FBF9F1;">
       <a href="{{ url('/home') }}" class="h1">
-        <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 144px; height: 81px;">
+        <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 60%; height: auto;">
       </a>
     </div>
     <div class="card-body" style="background-color: #FBF9F1;">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg" style="font-weight: bold;">Sign in to start your session</p>
 
       <form method="POST" action="{{route('login')}}">
         @csrf
@@ -36,15 +36,15 @@
 
         <br>
 
-        <div style="display:contents; align-items:center; justify-content:center" >
-          <div class="row">
+        <div class="text-center">
+          <div class="row text-center">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-light btn-block" style="background-color: #AAD7D9;">Sign In</button>
+              <button type="submit" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-dark btn-block" style="background-color: #AAD7D9;">Register</a>
+              <a href="{{route('register')}}" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Register</a>
             </div>
             <!-- /.col -->
           </div>
@@ -53,11 +53,11 @@
         
       </form>
       <br>
-        <div class="row">
+        <div class="row; text-center">
             <div class="col-12">
             <p class="mb-1">
                 @if (Route::has('password.request'))
-                <a href="{{route('password.request')}}">I forgot my password</a>
+                <a href="{{route('password.request')}}" style="color: black;">I forgot my password</a>
                 @endif
             </p>
             </div>

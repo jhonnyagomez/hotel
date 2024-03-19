@@ -2,13 +2,15 @@
 
 @section('content')
 
-<div class="register-box bg-dark.bg-gradient">
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="../../index2.html" class="h1">The Rest Place</a>
+<div class="register-box bg-dark.bg-gradient text-center" >
+  <div class="card card-outline">
+    <div class="card-header text-center" style="background-color: #FBF9F1;">
+      <a href="#">
+      <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 60%; height: auto;">
+      </a>
     </div>
-    <div class="card-body">
-      <p class="login-box-msg">Register a new membership</p>
+    <div class="card-body" style="background-color: #FBF9F1;">
+      <p class="login-box-msg" style="font-weight: bold;">Register a new membership</p>
 
       <form action="{{ route('register') }}" method="post">
         @csrf
@@ -44,15 +46,10 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-
-            </div>
-          </div>
+        <div class="row text-center">
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+          <div class="col-4 text-center">
+            <button type="submit" class="btn btn-light btn-block" style="background-color: #92C7CF; color:white">Register</button>
           </div>
           <!-- /.col -->
         </div>
@@ -62,7 +59,7 @@
 
       </div>
 
-      <a href="login" class="text-center">Ya tengo cuenta</a>
+      <a href="login" class="text-center" style="color: black;">I already have an account</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
