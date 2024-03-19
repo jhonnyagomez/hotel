@@ -7,10 +7,12 @@
 <div class="login-box" >
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
-    <div class="card-header text-center">
-      <a href="{{ url('/home') }}" class="h1">THE REST PLACE</a>
+    <div class="card-header text-center" style="background-color: #92C7CF;">
+      <a href="{{ url('/home') }}" class="h1">
+        <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 144px; height: 81px;">
+      </a>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="background-color: #FBF9F1;">
       <p class="login-box-msg">Sign in to start your session</p>
 
       <form method="POST" action="{{route('login')}}">
@@ -38,11 +40,11 @@
           <div class="row">
             <!-- /.col -->
             <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              <button type="submit" class="btn btn-light btn-block" style="background-color: #AAD7D9;">Sign In</button>
             </div>
 
             <div class="col-4">
-              <a href="{{route('register')}}" class="btn btn-primary btn-block">Register</a>
+              <a href="{{route('register')}}" class="btn btn-dark btn-block" style="background-color: #AAD7D9;">Register</a>
             </div>
             <!-- /.col -->
           </div>
