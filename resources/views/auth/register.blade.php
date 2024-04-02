@@ -11,7 +11,7 @@
     </div>
     <div class="card-body" style="background-color: #FBF9F1;">
       <p class="login-box-msg" style="font-weight: bold;">Register a new membership</p>
-
+      
       <form action="{{ route('register') }}" method="post">
         @csrf
         <div class="input-group mb-3 ">
@@ -64,8 +64,5 @@
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
-
-
-
 
 @endsection
