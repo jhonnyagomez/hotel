@@ -12,8 +12,12 @@
              <div class="image">
                  <a href="#" class=""> {{ Auth::user()->name }}
                      <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                         <svg style="height:30px; padding-left:20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                             <path fill="rgb(220,53,69)" d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z" />
+                         <svg style="height:30px; padding-left:20px " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                             <g id="SVGRepo_iconCarrier">
+                                 <path d="M18 8L22 12M22 12L18 16M22 12H9M15 4.20404C13.7252 3.43827 12.2452 3 10.6667 3C5.8802 3 2 7.02944 2 12C2 16.9706 5.8802 21 10.6667 21C12.2452 21 13.7252 20.5617 15 19.796" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                             </g>
                          </svg>
                      </a>
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -21,7 +25,7 @@
                      </form>
                  </a>
              </div>
-                <div class="info"></div>
+             <div class="info"></div>
          </div>
      </ul>
  </nav>
