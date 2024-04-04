@@ -1,12 +1,12 @@
 @extends('layouts.applogin')
 @section('tittle','Login')
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 10%;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card text-center">
                 <div class="card-header">
-                    {{ __('Reset Password') }}
+                    <img src="{{asset('backend/dist/img/prueba2.png')}}" style="width: 40%; height: auto;">
                 </div>
 
                 <div class="card-body">
