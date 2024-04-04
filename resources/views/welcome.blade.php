@@ -31,6 +31,7 @@
                 </div>
             @endif
 
+
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
                     <img src="{{asset('backend/dist/img/prueba.png')}}" >
@@ -47,6 +48,7 @@
                         <br>
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
+                    
                 </div>
             </div>
         </div>
