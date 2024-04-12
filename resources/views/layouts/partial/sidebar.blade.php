@@ -3,9 +3,9 @@
 
 
         <div style="background-color: #222831;">
-            <a href="#" class="brand-link">
+            <a href="#" class="brand-link" style="text-decoration: none;">
                 <img src="{{asset('backend/dist/img/logox.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light" style="color: #4C6E9D">The Rest Place</span>
+                <span class="brand-text font-weight-light" style="color: #4C6E9D; ">The Rest Place</span>
             </a>
         </div>
 

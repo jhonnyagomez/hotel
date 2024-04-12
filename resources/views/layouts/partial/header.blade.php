@@ -10,7 +10,7 @@
          <!-- Navbar Search -->
          <div class="user-panel d-flex">
              <div class="image">
-                 <a href="#" class="" style="color: #222831;"> {{ Auth::user()->name }}
+                 <a href="#" class="" style="color: #222831; text-decoration:none;"> <strong>{{ Auth::user()->name }}</strong>
                      <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="color: #222831">
                          <svg style="height:30px; padding-left:20px " viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
