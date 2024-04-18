@@ -29,11 +29,11 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
+              <div class="card-header" style="background-color: #E5E1DA;">
                 <h3 class="card-title">DataTable Product</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body" style="background-color: #FBF9F1;">
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
