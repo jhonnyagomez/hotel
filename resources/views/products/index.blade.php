@@ -1,99 +1,121 @@
 @extends('layouts.app')
 
+@section('title','Product List')
+
 @section('content')
 
-<div class="wrapper">
-  <!-- Navbar -->
-  <!-- Main Sidebar Container -->
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+<div class="content-wrapper">
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>DataTables</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#" style="text-decoration: none;"><strong>Home</strong></a></li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+		<div class="container-fluid">
+		</div>
     </section>
-
-    <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header" style="background-color: #E5E1DA;">
-                <h3 class="card-title">DataTable Product</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body" style="background-color: #FBF9F1;">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Date Caducidade</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-
-                  <tbody>
-                    @foreach($products as $product)
-                  <tr>
-                    <td>{{ $product -> id}}</td>
-                    <td>{{ $product -> name}}</td>
-                    <td>{{ $product -> description}}</td>
-                    <td>{{ $product -> price}}</td>
-                    <td>{{ $product -> date_caducidade}}</td>
-                    <td>{{ $product -> quantity}}</td>
-                    <td>
-                        <a href="{{route('products.edit', $product->id)}}" class="btn btn-info btn-sm" tittle="Edit" ><i class="fas fa-pencil-alt"></i></a>
-
-                        <form class="d-inline delete-form" action="{{route('products.destroy', $product)}}" method="$_POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash-alt" ></i></button>
-                        </form>
-                    </td>
-                  </tr>
-                  @endforeach
-                  </tbody>
-
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-header bg-secondary" style="font-size: 1.75rem;font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem;">
+							@yield('title')
+								<a href="{{ route('products.create') }}" class="btn btn-primary float-right" title="Create"><i class="fas fa-plus nav-icon"></i></a>
+						</div>
+						<div class="card-body">
+							<table id="example1" class="table table-bordered table-hover" style="width:100%">
+								<thead class="text-primary">
+									<tr>
+										<th width="10px">ID</th>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Price</th>
+										<th>Date Caducidade</th>
+										<th>Quantity</th>
+										<th width="50px">Acción</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach($products as $product)
+									<tr>
+										<td>{{ $product -> id}}</td>
+                    					<td>{{ $product -> name}}</td>
+                    					<td>{{ $product -> description}}</td>
+                    					<td>{{ $product -> price}}</td>
+                    					<td>{{ $product -> date_caducidade}}</td>
+                    					<td>{{ $product -> quantity}}</td>
+										<td>
+											<input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
+											data-toggle="toggle" data-on="Activo" data-off="Inactivo" {{ $product->estado ? 'checked' : '' }}>
+										</td>
+										
+										<td>
+											<a href="{{ route('products.edit',$product->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+											<form class="d-inline delete-form" action="{{ route('products.destroy', $product) }}"  method="POST">
+												@csrf
+												@method('DELETE')
+												<button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash-alt"></i></button>
+											</form>
+										</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
+ </div>
 @endsection
 
 @push('scripts')
-
-<script type="text/javascript">
+	<script>
+		$(document).ready(function(){
+			$("example1").DataTable()
+		});
+		$(function() {
+			$('.toggle-class').change(function() {
+				var estado = $(this).prop('checked') == true ? 1 : 0;
+				var product_id = $(this).data('id');
+				$.ajax({
+					type: "GET",
+					dataType: "json",
+					url: 'cambioestadoproduct',
+					data: {'estado': estado, 'product_id': product_id},
+					success: function(data){
+					  console.log(data.success)
+					}
+				});
+			})
+		  })
+	</script>
+	<script>
+	$('.delete-form').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+			title: 'Estas seguro?',
+			text: "Este registro se eliminara definitivamente",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Aceptar',
+			cancelButtonText: 'Cancelar'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	</script>
+	@if(session('eliminar') == 'ok')
+		<script>
+			Swal.fire(
+				'Eliminado',
+				'El registro ha sido eliminado exitosamente',
+				'success'
+			)
+		</script>
+	@endif
+	<script type="text/javascript">
 		$(function () {
 			$("#example1").DataTable({
 				"responsive": true, 
@@ -102,13 +124,13 @@
 				//"buttons": ["excel", "pdf", "print", "colvis"],
 				"language": 
 						{
-							"sLengthMenu": "Mostrar MENU entradas",
+							"sLengthMenu": "Mostrar _MENU_ entradas",
 							"sEmptyTable": "No hay datos disponibles en la tabla",
-							"sInfo": "Mostrando START a END de TOTAL entradas",
+							"sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
 							"sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
 							"sSearch": "Buscar:",
 							"sZeroRecords": "No se encontraron registros coincidentes en la tabla",
-							"sInfoFiltered": "(Filtrado de MAX entradas totales)",
+							"sInfoFiltered": "(Filtrado de _MAX_ entradas totales)",
 							"oPaginate": {
 								"sFirst": "Primero",
 								"sPrevious": "Anterior",
@@ -132,6 +154,4 @@
 			});//.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 		});
 	</script>
-
 @endpush
-

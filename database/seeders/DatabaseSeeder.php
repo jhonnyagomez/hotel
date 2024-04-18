@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        //User::factory(10)->create(); Es para generar usuarios al azar en la base de datos
-        //Product::factory(10)->create();
-        Customer::factory(10)->create();
+        //User::factory(10)->create(); //Es para generar usuarios al azar en la base de datos
+        //Product::factory(100)->create();
+        //Customer::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
