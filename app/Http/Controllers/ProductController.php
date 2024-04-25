@@ -54,6 +54,8 @@ class ProductController extends Controller
 			$product->quantity = $request->quantity;
 			$product->price = $request->price;
 			$product->image = $imagename;
+            $product->status = 1;
+            $product->registerby = $request->user()->id;
 			$product->save();
 
             return redirect()->route ('products.index');
@@ -85,9 +87,17 @@ class ProductController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+     */     
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+       return redirect()->route('products.index')->with('eliminar','ok');
     }
+
+    public function changestatusproduct(Request $request)
+	{
+		$product = Product::find($request->product_id);
+		$product->status=$request->status;
+		$product->save();
+	}
 }

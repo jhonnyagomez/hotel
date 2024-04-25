@@ -18,7 +18,7 @@ return new class extends Migration
             $table -> float ('price');
             $table -> date('date caducidade') -> nullable();
             $table -> integer('quantity');
-            $table -> string('image')->nullable();
+            $table -> string('image') -> nullable();
             $table->timestamps();
         });
     }

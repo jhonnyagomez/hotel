@@ -28,6 +28,8 @@
 										<th>Price</th>
 										<th>Date Caducidade</th>
 										<th>Quantity</th>
+										<th>Image</th>
+										<th>Status</th>
 										<th width="50px">Acción</th>
 									</tr>
 								</thead>
@@ -40,11 +42,11 @@
                     					<td>{{ $product -> price}}</td>
                     					<td>{{ $product -> date_caducidade}}</td>
                     					<td>{{ $product -> quantity}}</td>
+										<td>{{ $product -> image}}</td>
 										<td>
 											<input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											data-toggle="toggle" data-on="Activo" data-off="Inactivo" {{ $product->estado ? 'checked' : '' }}>
+											data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $product->status ? 'checked' : '' }}>
 										</td>
-										
 										<td>
 											<a href="{{ route('products.edit',$product->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 											<form class="d-inline delete-form" action="{{ route('products.destroy', $product) }}"  method="POST">
@@ -73,13 +75,13 @@
 		});
 		$(function() {
 			$('.toggle-class').change(function() {
-				var estado = $(this).prop('checked') == true ? 1 : 0;
+				var status = $(this).prop('checked') == true ? 1 : 0;
 				var product_id = $(this).data('id');
 				$.ajax({
 					type: "GET",
 					dataType: "json",
-					url: 'cambioestadoproduct',
-					data: {'estado': estado, 'product_id': product_id},
+					url: 'changestatusproduct',
+					data: {'status': status, 'product_id': product_id},
 					success: function(data){
 					  console.log(data.success)
 					}
