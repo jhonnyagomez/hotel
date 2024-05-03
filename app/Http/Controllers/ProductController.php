@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\
 
 class ProductController extends Controller
 {

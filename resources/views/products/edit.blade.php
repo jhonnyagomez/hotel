@@ -18,7 +18,7 @@
 						<div class="card-header bg-secondary">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{ route('products.update',$product) }}">
+						<form method="POST" action="{{ route('products.update',$product) }}" enctype="multipart/form-data">
                             @csrf
 							@method('PUT')
 							<div class="card-body">

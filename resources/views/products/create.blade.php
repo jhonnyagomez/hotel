@@ -17,7 +17,7 @@
 						<div class="card-header bg-secondary">
 							<h3>@yield('title')</h3>
 						</div>
-						<form method="POST" action="{{route('products.store')}}">
+						<form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
 							@csrf
 							<div class="card-body">
 								<div class="row">
