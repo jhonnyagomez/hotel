@@ -19,6 +19,8 @@ return new class extends Migration
             $table -> date('date caducidade') -> nullable();
             $table -> integer('quantity');
             $table -> string('image') -> nullable();
+            $table -> string ('status') -> nullable();
+            $table -> string ('registerby') -> nullable();
             $table->timestamps();
         });
     }

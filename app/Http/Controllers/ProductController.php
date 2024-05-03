@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         $image = $request->file('image');
 			$slug = str::slug($request->name);
@@ -80,7 +81,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
 
 			$product = Product::find($id);
