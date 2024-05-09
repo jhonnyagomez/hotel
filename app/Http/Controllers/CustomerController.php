@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Customer;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -30,7 +31,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
         $image = $request->file('image');
 			$slug = str::slug($request->name);
@@ -81,7 +82,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(CustomerRequest $request, $id)
     {
 
 			$customer = Customer::find($id);
