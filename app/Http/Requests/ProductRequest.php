@@ -25,12 +25,24 @@ class ProductRequest extends FormRequest
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
 				'description' => 'nullable',
-				'price' => 'nullable|digits:10',
-				'date caducidade' => 'required',
+				'price' => 'nullable',
+				'date caducidade' => 'nullable',
 				'quantity' => 'required',
-				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',				
+				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
+                'status' => 'nullable',
+                'registerby' => 'nullable',		
             ];
         }elseif (request()->isMethod('put')){
+            return[
+                'name' => 'required|regex:/^[\pL\s\-]+$/u',
+				'description' => 'nullable',
+				'price' => 'nullable',
+				'date caducidade' => 'nullable',
+				'quantity' => 'required',
+				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
+                'status' => 'nullable',
+                'registerby' => 'nullable',
+            ];
 
         }
         
