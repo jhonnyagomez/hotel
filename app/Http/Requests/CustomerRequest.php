@@ -11,7 +11,7 @@ class CustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,24 +24,20 @@ class CustomerRequest extends FormRequest
         if (request()->isMethod('POST')){
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-				'description' => 'nullable',
-				'price' => 'nullable',
-				'date caducidade' => 'nullable',
-				'quantity' => 'required',
-				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
-                'status' => 'nullable',
-                'registerby' => 'nullable',		
+				'identification_document' => 'nullable',
+				'address' => 'nullable',
+				'phone_number' => 'nullable',
+				'email' => 'required',
+				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',	
             ];
         }elseif (request()->isMethod('put')){
             return[
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-				'description' => 'nullable',
-				'price' => 'nullable',
-				'date caducidade' => 'nullable',
-				'quantity' => 'required',
-				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',
-                'status' => 'nullable',
-                'registerby' => 'nullable',
+				'identification_document' => 'nullable',
+				'address' => 'nullable',
+				'phone_number' => 'nullable',
+				'email' => 'required',
+				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',	
             ];
 
         }

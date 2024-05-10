@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Models\Customer;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 ;
 
@@ -33,6 +34,9 @@ Route::group(['middleware'=>['auth']], function(){
     //customers
     Route::resource('customers', CustomerController::class);
     Route::get('changestatuscustomer', [CustomerController::class, 'changestatuscustomer'])->name('changestatuscustomer');
+    //order
+    Route::resource('orders', OrderController::class);
+    
 });
 
 Route::get('/about', function () { 

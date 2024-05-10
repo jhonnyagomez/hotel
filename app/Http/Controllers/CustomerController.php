@@ -50,7 +50,7 @@ class CustomerController extends Controller
 			}
 
             $customer = new Customer();
-			$customer->identification_document = $request->identification_document;
+			$customer->identification_docuemnt = $request->identification_docuemnt;
 			$customer->name = $request -> name;
 			$customer->address = $request->address;
 			$customer->phone_number = $request->phone_number;

@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table -> bigInteger('product_id') -> unsigned();
             $table -> bigInteger('customer_id') -> unsigned();
             $table -> dateTime ('date');
             $table -> decimal ('price', 8,2);
+            $table -> string ('status') -> nullable();
+            $table -> string ('registerby') -> nullable();
+            $table -> string('route') -> nullable();
             $table->timestamps();
-            $table -> foreign('product_id')-> references('id')->on('products');
             $table -> foreign('customer_id')-> references('id')->on('customers');
         });
     }
