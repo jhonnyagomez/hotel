@@ -34,6 +34,11 @@
                                         	    </div>
 											</div>
 										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Date Caducidade <strong style="color:red;">(*)</strong></label>
+											<input type="date" class="form-control" name="date_caducidade" placeholder="0" autocomplete="off" value="{{ old('date_caducidade') }}">
+										</div>
+
                                         <div class="form-group label-floating">
 											<label class="control-label">Quantity <strong style="color:red;">(*)</strong></label>
 											<input type="text" class="form-control" name="quantity" placeholder="0" autocomplete="off" value="{{ old('quantity') }}">

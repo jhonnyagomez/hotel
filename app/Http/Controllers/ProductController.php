@@ -54,6 +54,7 @@ class ProductController extends Controller
 			$product->description = $request->description;
 			$product->quantity = $request->quantity;
 			$product->price = $request->price;
+			$product->date_caducidade = $request->date_caducidade;
 			$product->image = $imagename;
             $product->status = 1;
             $product->registerby = $request->user()->id;
@@ -106,6 +107,7 @@ class ProductController extends Controller
 			$product->description = $request->description;
 			$product->quantity = $request->quantity;
 			$product->price = $request->price;
+            $product->date_caducidade = $request->date_caducidade;
 			$product->image = $imagename;
             $product->registerby = $request->user()->id;
 			$product->save();

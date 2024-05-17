@@ -24,19 +24,19 @@ class CustomerRequest extends FormRequest
         if (request()->isMethod('POST')){
             return [
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-				'identification_document' => 'nullable',
+				'identification_document' => 'required|numeric|digits_between:5,12',
 				'address' => 'nullable',
 				'phone_number' => 'nullable',
-				'email' => 'required',
+				'email' => 'required|email',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',	
             ];
         }elseif (request()->isMethod('put')){
             return[
                 'name' => 'required|regex:/^[\pL\s\-]+$/u',
-				'identification_document' => 'nullable',
+				'identification_document' => 'required|numeric|digits_between:5,12',
 				'address' => 'nullable',
 				'phone_number' => 'nullable',
-				'email' => 'required',
+				'email' => 'required|email',
 				'image' => 'nullable|mimes:jpg,jpeg,png|max:3000',	
             ];
 

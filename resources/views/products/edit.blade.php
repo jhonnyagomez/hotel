@@ -32,9 +32,13 @@
 											<label class="control-label">Description <strong style="color:red;">(*)</strong></label>
                                         	<div class="form-group label-floating">
                                         	    <div style="display:flex;">
-											        <textarea class="form-control" name="description" rows="3" placeholder="Enter Description" value="{{ $product->description }}"></textarea>
+											        <textarea class="form-control" name="description" rows="3" placeholder="Enter Description" >{{ $product->description }}</textarea>
                                         	    </div>
 											</div>
+										</div>
+										<div class="form-group label-floating">
+											<label class="control-label">Date Caducidade <strong style="color:red;">(*)</strong></label>
+											<input type="date" class="form-control" name="date_caducidade" placeholder="0" autocomplete="off" value="{{ $product->date_caducidade }}">
 										</div>
                                         <div class="form-group label-floating">
 											<label class="control-label">Quantity <strong style="color:red;">(*)</strong></label>
@@ -48,7 +52,10 @@
                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                             <div class="form-group label-floating">
                                                 <label class="control-label">Image</label>
-                                                <input type="file" class="form-control-file" name="image" id="image" value="{{ $product->image }}">
+                                                <input type="file" class="form-control-file" name="image" id="image">
+												@if($product->image)
+            										<img src="{{ asset('uploads/products/'.$product->image) }}" alt="Product Image" style="height: 70px; width: 70px">
+        										@endif
                                             </div>
                                         </div>
 									</div>

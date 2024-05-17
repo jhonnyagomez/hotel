@@ -51,7 +51,7 @@
 										</td>
 										<td>
 											<input data-id="{{$product->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $product->status ? 'checked' : '' }}>
+											data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $product ->status ? 'checked' : '' }}>
 										</td>
 										<td>{{ $product -> registerby}}</td>
 										<td>

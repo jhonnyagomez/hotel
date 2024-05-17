@@ -19,7 +19,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders=Order::select('customers.name', 'customers.identification_docuemnt','orders.date','orders.price','orders.status')
+        $orders=Order::select('customers.name', 'customers.identification_document','orders.date','orders.price','orders.status')
         -> join ('customers','customer_id','=','orders.customer_id')->get();
         return view('orders.index', compact('orders'));
     }

@@ -31,29 +31,7 @@
 										<th width="50px">Acción</th>
 									</tr>
 								</thead>
-								<tbody>
-									@foreach($orders as $order)
-									<tr>
-										<td>{{ $order -> id}}</td>
-                    					<td>{{ $order -> customer -> name}}</td>
-										<td>{{ $order -> customer -> identification_docuemnt}}</td>
-                    					<td>{{ $order -> date}}</td>
-                    					<td>{{ $order -> price}}</td>
-										<td>
-											<input data-id="{{$order->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" 
-											data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $order->status ? 'checked' : '' }}>
-										</td>
-										<td>
-											<a href="{{ route('orders.edit',$order->id) }}" class="btn btn-info btn-sm" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-											<form class="d-inline delete-form" action="{{ route('orders.destroy', $order) }}"  method="POST">
-												@csrf
-												@method('DELETE')
-												<button type="submit" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash-alt"></i></button>
-											</form>
-										</td>
-									</tr>
-									@endforeach
-								</tbody>
+								
 							</table>
 						</div>
 					</div>
@@ -122,13 +100,13 @@
 				//"buttons": ["excel", "pdf", "print", "colvis"],
 				"language": 
 						{
-							"sLengthMenu": "Mostrar _MENU_ entradas",
+							"sLengthMenu": "Mostrar MENU entradas",
 							"sEmptyTable": "No hay datos disponibles en la tabla",
-							"sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+							"sInfo": "Mostrando START a END de TOTAL entradas",
 							"sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
 							"sSearch": "Buscar:",
 							"sZeroRecords": "No se encontraron registros coincidentes en la tabla",
-							"sInfoFiltered": "(Filtrado de _MAX_ entradas totales)",
+							"sInfoFiltered": "(Filtrado de MAX entradas totales)",
 							"oPaginate": {
 								"sFirst": "Primero",
 								"sPrevious": "Anterior",

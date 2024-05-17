@@ -42,7 +42,7 @@
 	<link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 	<link rel="stylesheet" href="{{asset('backend/dist/css/select2.css')}}">
     <!-- Select2 -->
-	<script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
+	<!-- <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script> -->
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -107,6 +107,9 @@
     <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('backend/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+    <!-- Select2 -->
+	<script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
     
 
     @stack('scripts')

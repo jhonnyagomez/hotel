@@ -16,7 +16,7 @@ return new class extends Migration
             $table -> string ('name');
             $table -> text('description') -> nullable();
             $table -> float ('price');
-            $table -> date('date caducidade') -> nullable();
+            $table -> date('date_caducidade') -> nullable();
             $table -> integer('quantity');
             $table -> string('image') -> nullable();
             $table -> string ('status') -> nullable();

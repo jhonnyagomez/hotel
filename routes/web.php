@@ -36,7 +36,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('changestatuscustomer', [CustomerController::class, 'changestatuscustomer'])->name('changestatuscustomer');
     //order
     Route::resource('orders', OrderController::class);
-    
+        
 });
 
 Route::get('/about', function () { 

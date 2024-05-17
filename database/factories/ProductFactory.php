@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->sentence,
             'quantity' => $this->faker->randomNumber(2),
             'price' => $this->faker->randomNumber(2, 0, 1000),
-            'date caducidade' => $this->faker->date(),
+            'date_caducidade' => $this->faker->date(),
         ];
     }
 }
