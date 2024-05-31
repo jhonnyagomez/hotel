@@ -31,7 +31,9 @@
 										<th width="50px">Acción</th>
 									</tr>
 								</thead>
-								
+								<tbody>
+									
+								</tbody>
 							</table>
 						</div>
 					</div>

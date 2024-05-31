@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
        Order::factory(10)->create(); //Es para generar usuarios al azar en la base de datos
-       //Product::factory(100)->create();
-       //Customer::factory(90)->create();
+       Product::factory(100)->create();
+       Customer::factory(90)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

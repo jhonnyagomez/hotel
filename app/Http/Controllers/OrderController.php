@@ -22,6 +22,7 @@ class OrderController extends Controller
         $orders=Order::select('customers.name', 'customers.identification_document','orders.date','orders.price','orders.status')
         -> join ('customers','customer_id','=','orders.customer_id')->get();
         return view('orders.index', compact('orders'));
+        
     }
 
     /**
@@ -81,7 +82,13 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = Order::select('customers.name', 'customer.document','orders.id', 'orders.date', 'orders.total')
+        -> join ('customers','customers.id','=','orders.customer_id')->where ('orders.id','=',$id)->first();
+
+        $detail = OrderDetail::select('products.name as product_name', 'products.price as productPrice')
+        ->join('products')->where ('order_details.order_id','=',$id)->get();
+
+        return view ('orders.index', compact('orders'));
     }
 
     /**
