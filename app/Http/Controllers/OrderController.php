@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderRequest;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\DetailOrder;
 use App\Models\Product;
-use App\Models\User;
-use App\Http\Requests\OrderRequest;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\DB;
+
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -41,7 +43,7 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -59,15 +61,6 @@ class OrderController extends Controller
             
             $cont = 0;
             
-            //TODO: ARREGLAR ESTA PARTE
-            // while ($cont < count($item)) {
-            //     $detailorders = new DetailOrder();
-            //     $detailorders -> order_id= $idorder;
-            //     $detailorders -> product_id= $idproduct;
-            //     $detailorders -> quantity= $quantity;
-            //     $detailorders -> subtotal = $subtotal;                
-
-            // }
             DB::commit();
             return redirect()->route('orders.index')->with('successMsg', 'Exitoso');
 
@@ -75,6 +68,61 @@ class OrderController extends Controller
             return redirect()->back()->with('successMsg', 'Error to register the info');
             DB::rollBack();
         }
+
+        // $order = Order::create([
+        //     'date' => Carbon::now()->toDateTimeString(),
+        //     'price' => $request->price,
+        //     'route' => "Por hacer",
+        //     'customer_id' => Customer::find($request->customer)->id,
+        // ]);
+
+        // $order->status = 0;
+        // $order->registerby = $request->registerby;
+
+        // $price = 0;
+
+        // $rawProductId = $request->product_id;
+        // $rawQuantity = $request->quantity;
+        // for ($i = 0; $i < count($rawProductId); $i++) {
+        //     $product = Product::find($rawProductId[$i]);
+        //     $quantity = $rawQuantity[$i];
+        //     $subtotal = $product->price * $quantity;
+
+        //     $order->orderDetails()->create([
+        //         'quantity' => $quantity,
+        //         'subtotal' => $subtotal,
+        //             'product_id' => $product->id,
+        //         ]);
+
+        //         $price += $subtotal;
+        //     }
+        //     $order->price = $price;
+           
+            
+            
+            
+
+            // Generate bill (PDF).
+            $pdfName = 'uploads/bills/bill_' . $order->id . '_' . Carbon::now()->format('YmdHis') . '.pdf';
+
+            $order = Order::find($order->id);
+            $client = Customer::where("id", $order->customer_id)->first();
+            $details = DetailOrder::with('product')
+                ->where('detailorders.order_id', '=', $order->id)
+                ->get();
+
+            $pdf = PDF::loadView('orders.bill', compact("order", "customer", "details"))
+                ->setPaper('letter')
+                ->output();
+
+            file_put_contents($pdfName, $pdf);
+
+            $order->route = $pdfName;
+            $order->save();
+
+
+            return redirect()->route("orders.index")->with("success", "The orders has been created.");
+        
     }
 
     /**
@@ -85,7 +133,7 @@ class OrderController extends Controller
         $order = Order::select('customers.name', 'customer.document','orders.id', 'orders.date', 'orders.total')
         -> join ('customers','customers.id','=','orders.customer_id')->where ('orders.id','=',$id)->first();
 
-        $detail = OrderDetail::select('products.name as product_name', 'products.price as productPrice')
+        $detail = DetailOrder::select('products.name as product_name', 'products.price as productPrice')
         ->join('products')->where ('order_details.order_id','=',$id)->get();
 
         return view ('orders.index', compact('orders'));
@@ -110,8 +158,15 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route("orders.index")->with("success", "The order has been deleted successfully");
+    }
+
+    public function changestatusorder(Request $request){
+        $order = Order::find($request->order_id);
+        $order->status = $request->status;
+        $order->save();
     }
 }

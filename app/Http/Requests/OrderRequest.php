@@ -21,8 +21,18 @@ class OrderRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        if (request()->isMethod('POST')) {
+            return [
+                'price' => 'required',
+                'status' => 'nullable',
+                'registerby' => 'nullable',
+            ];
+        } elseif (request()->isMethod('PUT')) {
+            return [
+                'price' => 'required',
+                'status' => 'nullable',
+                'registerby' => 'nullable',
+            ];
+        }
     }
 }

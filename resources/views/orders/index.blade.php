@@ -32,8 +32,9 @@
 									</tr>
 								</thead>
 								<tbody>
-									
-								</tbody>
+                                        
+
+                                </tbody>
 							</table>
 						</div>
 					</div>
@@ -132,4 +133,6 @@
 			});//.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 		});
 	</script>
+
+	
 @endpush

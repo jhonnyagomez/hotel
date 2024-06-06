@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Order>
  */
@@ -16,8 +17,14 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $product = \App\Models\Product::factory()->create();
         return [
-            //
+            'date'=>$this->faker->unique()->dateTime(),
+            'price'=>$this->faker->randomFloat(0,10000, 500000),
+            'route'=>$this->faker->colorName(),
+            'registerby'=>\App\Models\User::factory(),
+            'status'=>'1',
+            'customer_id'=>\App\Models\Customer::factory(),
         ];
     }
 }
